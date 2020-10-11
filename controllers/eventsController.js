@@ -60,7 +60,7 @@ const updateEvent = async (req, res = response) => {
    
 
    try {
-      const uid = req.uid;
+     
       const eventId = req.params.id;
       const event = await Event.findById(eventId);
 
@@ -72,7 +72,7 @@ const updateEvent = async (req, res = response) => {
       }
 
       if (event.user.toString() !== uid) {
-         res.status(401).json({
+         return res.status(401).json({
             ok: false,
             msg: "You can't update this event"
          });
