@@ -60,7 +60,7 @@ const updateEvent = async (req, res = response) => {
    
 
    try {
-     
+      const uid = req.uid;
       const eventId = req.params.id;
       const event = await Event.findById(eventId);
 
