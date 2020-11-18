@@ -119,17 +119,12 @@ const deleteEvent = async (req, res = response) => {
       }
 
       if (event.user.toString() !== uid) {
-         res.status(401).json({
+        return res.status(401).json({
             ok: false,
-            msg: "You can't update this event"
+            msg: "You can't delete this event"
          });
       }
 
-      /* At this point you can update the event */
-      const newEvent = {
-         ...req.body,
-         user: uid
-      }
 
       await Event.findByIdAndRemove(eventId);
       
